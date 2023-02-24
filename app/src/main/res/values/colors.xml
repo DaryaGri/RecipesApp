@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="nude_200">#D9C3B1</color>
+    <color name="green_500">#94A453</color>
+    <color name="green_700">#65734B</color>
+    <color name="crimson_200">#F1445B</color>
+    <color name="crimson_700">#F03625</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="transparent">#00000000</color>
+
+</resources>
