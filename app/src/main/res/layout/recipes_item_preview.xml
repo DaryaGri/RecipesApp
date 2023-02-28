@@ -14,17 +14,21 @@
         <ImageView
             android:id="@+id/recipeImageImageView"
             android:layout_width="160dp"
-            android:layout_height="100dp"
+            android:layout_height="110dp"
             android:scaleType="fitCenter"
+            android:layout_margin="6dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/descriptionTextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:padding="4dp"
+            android:layout_height="78dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:padding="6dp"
             android:text="Wash the chicken and dry it. Add all the masalas and salt and lemon juice. Also add hungcurd and ginger garlic paste.Mix them nicely. Massage the masalas on the chicken for 5 mins. Cover and keep aside for 1/2 hour."
             android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +38,7 @@
             android:id="@+id/titleTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_margin="6dp"
             android:text="Roasted chicken Tandoor"
             android:textColor="@android:color/black"
             android:textSize="15sp"
@@ -46,16 +50,17 @@
         <TextView
             android:id="@+id/ingredientsTextView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="80dp"
+            android:layout_margin="6dp"
+            android:padding="6dp"
             android:ellipsize="end"
-            android:maxLines="5"
+            android:maxLines="4"
             android:text="Chicken 1kg Hung curd 4 tbsp Turmeric 2 tsp Red chilly powder 2tbsp Coriander powder 1tsp Cumin powder 1tsp Garam masala 1tsp"
             android:textColor="@android:color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/recipeImageImageView"
-            app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+            app:layout_constraintTop_toBottomOf="@id/titleTextView"
+            app:layout_constraintBottom_toTopOf="@id/descriptionTextView"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -9,7 +9,7 @@
         android:id="@+id/recipesListFragment"
         android:name="com.example.recipesapp.ui.RecipesListFragment"
         android:label="fragment_all_recipes"
-        tools:layout="@layout/fragment_list_recipes" >
+        tools:layout="@layout/fragment_recipes_list" >
         <action
             android:id="@+id/action_listRecipes_to_recipeFragment"
             app:destination="@id/recipeFragment"
