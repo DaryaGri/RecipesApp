@@ -1,11 +1,13 @@
 package com.example.recipesapp.data
 
+import java.io.Serializable
+
 data class Recipe(
     val aggregateLikes: Int,
     val analyzedInstructions: List<AnalyzedInstruction>,
     val cheap: Boolean,
     val cookingMinutes: Int,
-    val creditsText: String,
+    var creditsText: String,
     val cuisines: List<String>,
     val dairyFree: Boolean,
     val diets: List<String>,
@@ -14,8 +16,8 @@ data class Recipe(
     val gaps: String,
     val glutenFree: Boolean,
     val healthScore: Int,
-    val id: Int,
-    val image: String,
+    var id: Int,
+    var image: String,
     val imageType: String,
     val instructions: String,
     val license: String,
@@ -31,10 +33,10 @@ data class Recipe(
     val spoonacularSourceUrl: String,
     val summary: String,
     val sustainable: Boolean,
-    val title: String,
+    var title: String,
     val vegan: Boolean,
     val vegetarian: Boolean,
     val veryHealthy: Boolean,
     val veryPopular: Boolean,
     val weightWatcherSmartPoints: Int
-)
+) : Serializable

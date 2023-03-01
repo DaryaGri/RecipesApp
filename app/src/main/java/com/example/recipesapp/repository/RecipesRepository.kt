@@ -5,5 +5,7 @@ import javax.inject.Inject
 
 class RecipesRepository @Inject constructor(private val recipesApi: ApiInterface) {
 
-    suspend fun getRandomRecipes(tags: String) = recipesApi.getRandomRecipes(tags)
+    suspend fun getRandomRecipes() = recipesApi.getRandomRecipes()
+
+    suspend fun getSearchRecipes(tags: String) = recipesApi.getSearchRecipes(tags)
 }

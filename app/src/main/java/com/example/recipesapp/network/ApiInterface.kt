@@ -10,6 +10,14 @@ interface ApiInterface {
 
     @GET("recipes/random")
     suspend fun getRandomRecipes(
+        @Query("number")
+        number: Int = 50,
+        @Query("apiKey")
+        apiKey: String = API_KEY
+    ): Response<RecipesResponse>
+
+    @GET("recipes/random")
+    suspend fun getSearchRecipes(
         @Query("tags")
         cuisines: String,
         @Query("number")

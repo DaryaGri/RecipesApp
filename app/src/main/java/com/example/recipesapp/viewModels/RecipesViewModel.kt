@@ -17,25 +17,40 @@ class RecipesViewModel @Inject constructor(
 ) : ViewModel() {
 
     val recipesData: MutableLiveData <Resource<RecipesResponse>> = MutableLiveData()
+    val searchData: MutableLiveData <Resource<RecipesResponse>> = MutableLiveData()
 
     init {
         getRecipes()
     }
 
-    private fun getRecipes() = viewModelScope.launch {
+    fun getRecipes() = viewModelScope.launch {
         recipesData.postValue(Resource.Loading())
         val response = recipesRepository.getRandomRecipes()
         recipesData.postValue(handleRecipesResponse(response))
     }
 
+    fun searchRecipes(searchQuery: String) =viewModelScope.launch {
+        searchData.postValue(Resource.Loading())
+        val response = recipesRepository.getSearchRecipes(searchQuery)
+        searchData.postValue(handleSearchResponse(response))
+
+    }
+
     private fun handleRecipesResponse(response: Response<RecipesResponse>) : Resource<RecipesResponse> {
-        if(response.isSuccessful) {
+        return responseFromNetwork(response)
+    }
+
+    private fun handleSearchResponse(response: Response<RecipesResponse>) : Resource<RecipesResponse> {
+        return responseFromNetwork(response)
+    }
+
+    private fun responseFromNetwork(response: Response<RecipesResponse>): Resource<RecipesResponse> {
+        if (response.isSuccessful) {
             response.body()?.let { resultResponse ->
                 return Resource.Success(resultResponse)
             }
         }
         return Resource.Error(response.message())
     }
-
 
 }

@@ -42,6 +42,16 @@ class RecipesListFragment : Fragment() {
 
         setupRecyclerView()
         setupObservers()
+        setupNavigation()
+    }
+
+    private fun setupNavigation() {
+        recipesAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("recipe", it)
+            }
+            findNavController().navigate(R.id.action_listRecipes_to_recipeFragment, bundle)
+        }
     }
 
     private fun setupRecyclerView() {
@@ -58,7 +68,6 @@ class RecipesListFragment : Fragment() {
                     hideProgressBar()
                     response.data?.let { recipesResponse ->
                         recipesAdapter.differ.submitList(recipesResponse.recipes)
-
                     }
                 }
                 is Resource.Error -> {
