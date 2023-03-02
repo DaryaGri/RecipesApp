@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesapp.R
@@ -16,7 +14,6 @@ import com.example.recipesapp.adapters.RecipesAdapter
 import com.example.recipesapp.databinding.FragmentRecipesListBinding
 import com.example.recipesapp.util.Resource
 import com.example.recipesapp.viewModels.RecipesViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,7 +24,6 @@ class RecipesListFragment : Fragment() {
 
     private val viewModel: RecipesViewModel by viewModels()
     lateinit var recipesAdapter: RecipesAdapter
-    val TAG = "RecipesListFragment"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,7 +58,7 @@ class RecipesListFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.recipesData.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.recipesData.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
                     hideProgressBar()
@@ -80,7 +76,7 @@ class RecipesListFragment : Fragment() {
                     showProgressBar()
                 }
             }
-        })
+        }
     }
 
     private fun hideProgressBar() {
@@ -94,5 +90,9 @@ class RecipesListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val TAG = "RecipesListFragment"
     }
 }

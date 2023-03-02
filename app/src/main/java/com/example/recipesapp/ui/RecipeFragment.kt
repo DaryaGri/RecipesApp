@@ -8,7 +8,6 @@ import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.example.recipesapp.R
 import com.example.recipesapp.databinding.FragmentRecipeBinding
 import com.example.recipesapp.viewModels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,8 +19,7 @@ class RecipeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: RecipesViewModel by viewModels()
-    val args: RecipeFragmentArgs by navArgs()
-
+    private val args: RecipeFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,17 +36,15 @@ class RecipeFragment : Fragment() {
     }
 
     private fun setupWebPage() {
-        val recipe = args.resipe
+        val recipe = args.recipe
         binding.webView.apply {
             webViewClient = WebViewClient()
-            loadUrl(recipe.sourceUrl)
+            recipe.sourceUrl?.let { loadUrl(it) }
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }

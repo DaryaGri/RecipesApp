@@ -9,8 +9,8 @@ import java.io.Serializable
 data class DbRecipes(
     @ColumnInfo var title: String?,
     @ColumnInfo var summary: String?,
-    @ColumnInfo var instructions: String,
+    @ColumnInfo var instructions: String?,
     @ColumnInfo var sourceUrl: String? = null,
     @ColumnInfo var image: String? = null,
     @PrimaryKey(autoGenerate = true) var id: Int? = null
-)
+) : Serializable

@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesapp.R
 import com.example.recipesapp.adapters.RecipesAdapter
+import com.example.recipesapp.data.Recipe
 import com.example.recipesapp.databinding.FragmentFavouriteRecipesBinding
 import com.example.recipesapp.databinding.FragmentRecipesListBinding
 import com.example.recipesapp.databinding.FragmentSearchRecipesBinding
@@ -49,6 +50,7 @@ class FavouriteRecipesFragment : Fragment() {
             findNavController().navigate(R.id.action_favouriteRecipes_to_recipeFragment, bundle)
         }
     }
+
 
     private fun setupRecyclerView() {
         recipesAdapter = RecipesAdapter(requireContext())

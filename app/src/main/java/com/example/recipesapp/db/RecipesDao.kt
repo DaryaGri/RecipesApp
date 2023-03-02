@@ -1,5 +1,6 @@
 package com.example.recipesapp.db
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.recipesapp.data.DbRecipes
 import kotlinx.coroutines.flow.Flow
@@ -14,5 +15,5 @@ interface RecipesDao {
     suspend fun delete(recipe: DbRecipes)
 
     @Query("SELECT * FROM DbRecipes")
-    fun getAllRecipes(): Flow<List<DbRecipes>>
+    fun getAllRecipes(): LiveData<List<DbRecipes>>
 }

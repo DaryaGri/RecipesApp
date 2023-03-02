@@ -51,6 +51,7 @@ class RecipesAdapter(val context: Context) :
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
+    private var onItemClickListener: ((Recipe) -> Unit)? = null
 
     override fun onBindViewHolder(holder: RecipesViewHolder, position: Int) {
         val recipe = differ.currentList[position]
@@ -61,8 +62,6 @@ class RecipesAdapter(val context: Context) :
             }
         }
     }
-
-    private var onItemClickListener: ((Recipe) -> Unit)? = null
 
     fun setOnItemClickListener(listener: (Recipe) -> Unit) {
         onItemClickListener = listener
