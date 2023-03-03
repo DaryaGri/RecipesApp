@@ -1,4 +1,4 @@
-package com.example.recipesapp.adapters
+package com.example.recipesapp.ui.adapters
 
 
 import android.content.Context
@@ -32,7 +32,7 @@ class RecipesAdapter(val context: Context) :
 
     private val differCallback = object : DiffUtil.ItemCallback<Recipe>() {
         override fun areItemsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
-            return oldItem.sourceUrl == newItem.sourceUrl
+            return oldItem.title == newItem.title
         }
 
         override fun areContentsTheSame(oldItem: Recipe, newItem: Recipe): Boolean {
@@ -51,6 +51,7 @@ class RecipesAdapter(val context: Context) :
     override fun getItemCount(): Int {
         return differ.currentList.size
     }
+
     private var onItemClickListener: ((Recipe) -> Unit)? = null
 
     override fun onBindViewHolder(holder: RecipesViewHolder, position: Int) {

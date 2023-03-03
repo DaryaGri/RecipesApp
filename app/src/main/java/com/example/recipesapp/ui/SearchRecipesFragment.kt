@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesapp.R
-import com.example.recipesapp.adapters.RecipesAdapter
+import com.example.recipesapp.ui.adapters.RecipesAdapter
 import com.example.recipesapp.databinding.FragmentSearchRecipesBinding
 import com.example.recipesapp.util.Constants.SEARCH_RECIPES_TIME_DELAY
 import com.example.recipesapp.util.Resource

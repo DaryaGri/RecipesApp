@@ -3,7 +3,6 @@ package com.example.recipesapp.db
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.recipesapp.data.DbRecipes
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface RecipesDao {
@@ -16,4 +15,8 @@ interface RecipesDao {
 
     @Query("SELECT * FROM DbRecipes")
     fun getAllRecipes(): LiveData<List<DbRecipes>>
+
+    @Query("SELECT * FROM DbRecipes WHERE title LIKE :title LIMIT 1")
+    suspend fun getByTitle(title: String): DbRecipes
+
 }

@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.recipesapp.databinding.FragmentRecipeBinding
 import com.example.recipesapp.viewModels.RecipesViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,6 +41,10 @@ class RecipeFragment : Fragment() {
         binding.webView.apply {
             webViewClient = WebViewClient()
             recipe.sourceUrl?.let { loadUrl(it) }
+        }
+        binding.favouriteFloatingButton.setOnClickListener {
+            viewModel.saveRecipe(recipe)
+            view?.let { view -> Snackbar.make(view, "Recipe saved successfully", Snackbar.LENGTH_SHORT).show() }
         }
     }
 

@@ -10,7 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipesapp.R
-import com.example.recipesapp.adapters.RecipesAdapter
+import com.example.recipesapp.ui.adapters.RecipesAdapter
 import com.example.recipesapp.databinding.FragmentRecipesListBinding
 import com.example.recipesapp.util.Resource
 import com.example.recipesapp.viewModels.RecipesViewModel

@@ -69,7 +69,8 @@ class RecipesViewModel @Inject constructor(
     fun deleteRecipe(recipe: Recipe) {
         val recipeToInsert = setRecipeToInsert(recipe)
         viewModelScope.launch {
-            localRecipesRepository.deleteRecipe(recipeToInsert)
+            val elementToDelete = localRecipesRepository.getByTitle(recipeToInsert)
+            localRecipesRepository.deleteRecipe(elementToDelete)
         }
     }
 

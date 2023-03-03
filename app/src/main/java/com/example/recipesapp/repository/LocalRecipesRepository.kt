@@ -11,4 +11,8 @@ class LocalRecipesRepository @Inject constructor(var dbDao: RecipesDao) {
     fun getFavouriteRecipes() = dbDao.getAllRecipes()
 
     suspend fun deleteRecipe(recipe: DbRecipes) = dbDao.delete(recipe)
+
+    suspend fun getByTitle(recipe: DbRecipes): DbRecipes {
+        return dbDao.getByTitle(recipe.title!!)
+    }
 }
