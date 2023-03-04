@@ -3,6 +3,7 @@ package com.example.recipesapp.ui.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -26,6 +27,10 @@ class RecipesAdapter(val context: Context) :
                 titleTextView.text = item.title
                 descriptionTextView.text = item.instructions
                 ingredientsTextView.text = item.summary
+
+                if(item.instructions.isNullOrEmpty()){
+                    descriptionTextView.visibility = View.GONE
+                }
             }
         }
     }

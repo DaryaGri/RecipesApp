@@ -1,5 +1,6 @@
 package com.example.recipesapp.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -45,6 +46,13 @@ class RecipeFragment : Fragment() {
         binding.favouriteFloatingButton.setOnClickListener {
             viewModel.saveRecipe(recipe)
             view?.let { view -> Snackbar.make(view, "Recipe saved successfully", Snackbar.LENGTH_SHORT).show() }
+        }
+        binding.shareFloatingButton.setOnClickListener {
+            val myIntent = Intent(Intent.ACTION_SEND);
+            myIntent.type = "text/plain"
+            myIntent.putExtra(Intent.EXTRA_TEXT, recipe.sourceUrl )
+            startActivity(Intent.createChooser(myIntent, "Share with"))
+
         }
     }
 

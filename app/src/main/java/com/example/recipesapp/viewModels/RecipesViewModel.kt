@@ -1,5 +1,6 @@
 package com.example.recipesapp.viewModels
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,23 +21,26 @@ class RecipesViewModel @Inject constructor(
     private val localRecipesRepository: LocalRecipesRepository
 ) : ViewModel() {
 
-    val recipesData: MutableLiveData<Resource<RecipesResponse>> = MutableLiveData()
-    val searchData: MutableLiveData<Resource<RecipesResponse>> = MutableLiveData()
+    private val _recipesData = MutableLiveData<Resource<RecipesResponse>>()
+    val recipesData: LiveData<Resource<RecipesResponse>> get() = _recipesData
+
+    private val _searchData: MutableLiveData<Resource<RecipesResponse>> = MutableLiveData()
+    val searchData: LiveData<Resource<RecipesResponse>> get() = _searchData
 
     init {
         getRecipes()
     }
 
     fun getRecipes() = viewModelScope.launch {
-        recipesData.postValue(Resource.Loading())
+        _recipesData.postValue(Resource.Loading())
         val response = recipesRepository.getRandomRecipes()
-        recipesData.postValue(handleRecipesResponse(response))
+        _recipesData.postValue(handleRecipesResponse(response))
     }
 
     fun searchRecipes(searchQuery: String) = viewModelScope.launch {
-        searchData.postValue(Resource.Loading())
+        _searchData.postValue(Resource.Loading())
         val response = recipesRepository.getSearchRecipes(searchQuery)
-        searchData.postValue(handleSearchResponse(response))
+        _searchData.postValue(handleSearchResponse(response))
 
     }
 
