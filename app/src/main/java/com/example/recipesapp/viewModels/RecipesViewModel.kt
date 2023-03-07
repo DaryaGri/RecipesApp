@@ -34,22 +34,14 @@ class RecipesViewModel @Inject constructor(
     fun getRecipes() = viewModelScope.launch {
         _recipesData.postValue(Resource.Loading())
         val response = recipesRepository.getRandomRecipes()
-        _recipesData.postValue(handleRecipesResponse(response))
+        _recipesData.postValue(responseFromNetwork(response))
     }
 
     fun searchRecipes(searchQuery: String) = viewModelScope.launch {
         _searchData.postValue(Resource.Loading())
         val response = recipesRepository.getSearchRecipes(searchQuery)
-        _searchData.postValue(handleSearchResponse(response))
+        _searchData.postValue(responseFromNetwork(response))
 
-    }
-
-    private fun handleRecipesResponse(response: Response<RecipesResponse>): Resource<RecipesResponse> {
-        return responseFromNetwork(response)
-    }
-
-    private fun handleSearchResponse(response: Response<RecipesResponse>): Resource<RecipesResponse> {
-        return responseFromNetwork(response)
     }
 
     private fun responseFromNetwork(response: Response<RecipesResponse>): Resource<RecipesResponse> {

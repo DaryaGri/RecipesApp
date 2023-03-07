@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="various_recipes">Розныя Рэцэпты</string>
+    <string name="favourite_recipes">Любiмыя Рэцэпты</string>
+    <string name="search_recipes">Пошук Рэцэптаў</string>
+    <string name="search">Пошук...</string>
+</resources>

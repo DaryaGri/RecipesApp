@@ -3,15 +3,15 @@
 
     <item
         android:id="@+id/recipesListFragment"
-        android:title="Various Recipes"
+        android:title="@string/various_recipes"
         android:icon="@drawable/baseline_menu_book_24"/>
     <item
         android:id="@+id/favouriteRecipesFragment"
-        android:title="Favourite Recipes"
+        android:title="@string/favourite_recipes"
         android:icon="@drawable/baseline_favorite_24"/>
     <item
         android:id="@+id/searchRecipesFragment"
-        android:title="Search Recipes"
+        android:title="@string/search_recipes"
         android:icon="@drawable/baseline_manage_search_24"/>
 
 </menu>

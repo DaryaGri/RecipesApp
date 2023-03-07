@@ -5,6 +5,10 @@ import androidx.room.Room
 import com.example.recipesapp.db.RecipesAppDataBase
 import com.example.recipesapp.db.RecipesDao
 import com.example.recipesapp.network.ApiInterface
+import com.example.recipesapp.repository.LocalRecipesRepository
+import com.example.recipesapp.repository.LocalRecipesRepositoryImpl
+import com.example.recipesapp.repository.RecipesRepository
+import com.example.recipesapp.repository.RecipesRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,6 +42,12 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideRecipesRepository(apiInterface: ApiInterface): RecipesRepository {
+        return RecipesRepositoryImpl(apiInterface)
+    }
+
+    @Provides
+    @Singleton
     fun provideAppDatabase(@ApplicationContext context: Context): RecipesAppDataBase {
         return Room.databaseBuilder(
             context,
@@ -49,6 +59,12 @@ object AppModule {
     @Singleton
     fun provideRecipesDao(db: RecipesAppDataBase): RecipesDao {
         return db.getRecipesDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideLocalRecipesRepository(recipesDao: RecipesDao): LocalRecipesRepository {
+        return LocalRecipesRepositoryImpl(recipesDao)
     }
 
 }

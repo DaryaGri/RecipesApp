@@ -1,18 +1,16 @@
 package com.example.recipesapp.repository
 
+import androidx.lifecycle.LiveData
 import com.example.recipesapp.data.DbRecipes
-import com.example.recipesapp.db.RecipesDao
-import javax.inject.Inject
 
-class LocalRecipesRepository @Inject constructor(var dbDao: RecipesDao) {
+interface LocalRecipesRepository {
 
-    suspend fun insertRecipe(recipe: DbRecipes) = dbDao.insertRecipe(recipe)
+    suspend fun insertRecipe(recipe: DbRecipes)
 
-    fun getFavouriteRecipes() = dbDao.getAllRecipes()
+    fun getFavouriteRecipes() : LiveData<List<DbRecipes>>
 
-    suspend fun deleteRecipe(recipe: DbRecipes) = dbDao.delete(recipe)
+    suspend fun deleteRecipe(recipe: DbRecipes)
 
-    suspend fun getByTitle(recipe: DbRecipes): DbRecipes {
-        return dbDao.getByTitle(recipe.title!!)
-    }
+    suspend fun getByTitle(recipe: DbRecipes): DbRecipes
+
 }

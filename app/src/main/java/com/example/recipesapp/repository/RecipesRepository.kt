@@ -1,11 +1,11 @@
 package com.example.recipesapp.repository
 
-import com.example.recipesapp.network.ApiInterface
-import javax.inject.Inject
+import com.example.recipesapp.data.RecipesResponse
+import retrofit2.Response
 
-class RecipesRepository @Inject constructor(private val recipesApi: ApiInterface) {
+interface RecipesRepository {
 
-    suspend fun getRandomRecipes() = recipesApi.getRandomRecipes()
+    suspend fun getRandomRecipes(): Response<RecipesResponse>
 
-    suspend fun getSearchRecipes(tags: String) = recipesApi.getSearchRecipes(tags)
+    suspend fun getSearchRecipes(tags: String): Response<RecipesResponse>
 }
