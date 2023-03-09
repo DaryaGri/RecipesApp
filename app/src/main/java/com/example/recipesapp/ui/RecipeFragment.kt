@@ -52,7 +52,6 @@ class RecipeFragment : Fragment() {
             myIntent.type = "text/plain"
             myIntent.putExtra(Intent.EXTRA_TEXT, recipe.sourceUrl )
             startActivity(Intent.createChooser(myIntent, "Share with"))
-
         }
     }
 

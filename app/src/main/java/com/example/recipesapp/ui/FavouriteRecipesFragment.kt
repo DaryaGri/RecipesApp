@@ -19,6 +19,7 @@ import com.example.recipesapp.viewModels.RecipesViewModel
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
+@Suppress("DEPRECATION")
 @AndroidEntryPoint
 class FavouriteRecipesFragment : Fragment() {
 
